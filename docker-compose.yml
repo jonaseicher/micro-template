@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  micro:
+    container_name: micro
+    build: .
+    image: micro
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["curl", "--fail", "localhost:8080/info"]
+      interval: 5s
+      retries: 3
+      start_period: 1s
+      timeout: 5s
