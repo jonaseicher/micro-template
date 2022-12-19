@@ -2,9 +2,11 @@
   "name": "micro-template",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
   "type": "module",
   "scripts": {
+    "clean": "rm -rf lib",
+    "build": "npm run clean && tsc",
     "start": "node index.js"
   },
   "author": "",
