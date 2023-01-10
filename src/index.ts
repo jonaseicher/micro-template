@@ -1,7 +1,6 @@
 import express from 'express';
 import axios from 'axios';
 import './db/sequelize';
-import { startDb } from './db/sequelize';
 
 const app = express();
 
@@ -15,5 +14,3 @@ app.get('/axios', async (_req, res) => {
 });
 
 app.listen('8080');
-
-startDb();

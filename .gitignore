@@ -6,3 +6,5 @@ node_modules/
 
 # typescript output folder
 lib
+
+printer-db.sqlite

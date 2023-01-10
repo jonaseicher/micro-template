@@ -1,11 +1,10 @@
-import { Sequelize, DataTypes, Model } from 'sequelize';
+import { Sequelize, DataTypes } from 'sequelize';
+import { Doctor } from './model';
 
 const sequelize = new Sequelize({
   dialect: 'sqlite',
-  storage: 'src/db/database.sqlite',
+  storage: 'printer-db.sqlite',
 });
-
-export class Doctor extends Model {}
 
 Doctor.init(
   {
@@ -44,7 +43,38 @@ Doctor.init(
   },
 );
 
-const doctor = new Doctor();
+export async function testDbConnection() {
+  try {
+    await sequelize.authenticate();
+    console.log('Database connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+}
+
+export async function syncTables() {
+  await Doctor.sync({ alter: true });
+}
+
+testDbConnection().then(() => {
+  syncTables().then(() => console.log('tables have been synced'));
+});
+
+// d.save();
+// doctor.save();
+
+// console.log('username', doctor.getDataValue('username'));
+
+// doctor.save();
+
+// Doctor.findAll().then((res) => {
+//   console.log(res);
+//   // const vova = res[res.length - 1];
+//   // console.log(vova);
+//   // vova.setDataValue('password', 'newpassword');
+//   // vova.username = 'p2';
+//   // vova.save();
+// });
 
 // async function getDoctorByUsername(username: string): Promise<Doctor | null> {
 //   try {
@@ -76,50 +106,3 @@ const doctor = new Doctor();
 //     return null;
 //   }
 // }
-
-export async function startDb() {
-  try {
-    await Doctor.sync();
-    await sequelize.authenticate();
-    console.log('Database connection has been established successfully.');
-
-    const doctors = await Doctor.findAll();
-    console.log('startDb –> doctors', doctors);
-
-    // let praxis = await Doctor.findAll({
-    //   where: {
-    //     username: 'praxis',
-    //   },
-    // });
-    // console.log('startDb –> praxis', praxis);
-
-    // const joshua = await getDoctorByUsername('Joshua');
-    // console.log('startDb –> joshua', joshua);
-
-    // add new
-    // const newDoctor = await addDoctor({
-    //   username: 'Joshua',
-    //   password: 'informme',
-    //   lastName: 'Gawlitza',
-    //   firstName: 'Joshua',
-    //   birthdate: '2022-12-14',
-    //   signature: '',
-    // });
-    // console.log('startDb –> newDoctor', newDoctor);
-
-    const newDoctor = await doctor.update(
-      {
-        username: 'Vova',
-        password: 'informme',
-        lastName: 'Bondar',
-        firstName: 'Vova',
-        birthdate: '2022-12-14',
-        signature: '',
-      },
-      { where: {} },
-    );
-    console.log('startDb –> newDoctor', newDoctor);
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
-}
