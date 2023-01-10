@@ -1,6 +1,6 @@
 import express from 'express';
 import axios from 'axios';
-import { testSequelizeConnection } from './sequelize';
+import { testSequelizeConnection } from './db/sequelize';
 
 const app = express();
 
