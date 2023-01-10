@@ -14,10 +14,16 @@
     "moduleResolution": "node",
     "strictFunctionTypes": true,
     "strictNullChecks": true,
-    // "declaration": true,
+    "declaration": true,
     "outDir": "./lib",
     "rootDir": "./src",
-    "typeRoots": ["typings", "./node_modules/@types"]
+    "typeRoots": [
+      "typings",
+      "./node_modules/@types"
+    ]
   },
-  "exclude": ["./node_modules/", "./lib/"]
+  "exclude": [
+    "./node_modules/",
+    "./lib/"
+  ]
 }
