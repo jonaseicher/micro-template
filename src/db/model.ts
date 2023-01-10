@@ -22,7 +22,7 @@ const Doctor = sequelize.define(
       allowNull: false,
     },
     birthdate: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     signature: {
