@@ -1,29 +1,25 @@
 {
   "compilerOptions": {
-    "experimentalDecorators": true,
+    "target": "ES6",
+    "lib": ["ES2023"], /* Specify library files to be included in the compilation. */
     "module": "commonjs",
+    "moduleResolution": "node",
+    "allowJs": true, /* Allow javascript files to be compiled. */
+    "experimentalDecorators": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es6",
-    "noImplicitAny": false,
     "resolveJsonModule": true,
-    "noUnusedLocals": true,
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": true, /* Disallow inconsistently-cased references to the same file. */
     "noFallthroughCasesInSwitch": true,
     "noUnusedParameters": true,
-    "moduleResolution": "node",
     "strictFunctionTypes": true,
+    "strict": true,
     "strictNullChecks": true,
     "declaration": true,
-    "outDir": "./lib",
-    "rootDir": "./src",
-    "typeRoots": [
-      "typings",
-      "./node_modules/@types"
-    ]
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "rootDir": "src", /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
+    "outDir": "target" /* Redirect output structure to the directory. */
   },
-  "exclude": [
-    "./node_modules/",
-    "./lib/"
-  ]
+  "exclude": ["./node_modules/", "./target/"]
 }

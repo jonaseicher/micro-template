@@ -1,6 +1,8 @@
+import log from './config/logger';
 import express from 'express';
 import axios from 'axios';
-import { testSequelizeConnection } from './db/sequelize';
+
+log.info('hello world');
 
 const app = express();
 
@@ -14,5 +16,3 @@ app.get('/axios', async (_req, res) => {
 });
 
 app.listen('8080');
-
-testSequelizeConnection();
