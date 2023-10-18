@@ -2,7 +2,7 @@ FROM node:18
 
 WORKDIR /micro
 
-COPY index.js ./
+COPY target/ ./
 
 COPY package.json ./
 
